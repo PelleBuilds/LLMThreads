@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Huggingface-api-Client-\Ai\HuggingFaceApiClient.csproj" />
+    <ProjectReference Include="..\Huggingface-api-Client-\Ai\HuggingFaceApiClient.csproj" />
   </ItemGroup>
 
 </Project>
