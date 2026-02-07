@@ -1,0 +1,177 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\views\\home\\chatmessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\views\\home\\chatmessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\views\\home\\startnewthread.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\views\\home\\startnewthread.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\views\\home\\thread.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\views\\home\\thread.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\models\\chatviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\models\\chatviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|c:\\users\\pelle\\source\\repos\\threadmapllm\\threadmapllm\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED309665-767F-B34C-BC27-5DABD3FA04FA}|ThreadMapLLM\\ThreadMapLLM.csproj|solutionrelative:threadmapllm\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ThreadMapLLM\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-05T20:40:34.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Thread.cshtml",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\Thread.cshtml",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Views\\Home\\Thread.cshtml",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\Thread.cshtml",
+              "RelativeToolTip": "ThreadMapLLM\\Views\\Home\\Thread.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-04T21:35:15.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "ThreadMapLLM\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-24T16:06:20.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "ThreadMapLLM\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAADYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-04T14:05:26.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StartNewThread.cshtml",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\StartNewThread.cshtml",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Views\\Home\\StartNewThread.cshtml",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\StartNewThread.cshtml",
+              "RelativeToolTip": "ThreadMapLLM\\Views\\Home\\StartNewThread.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-24T20:16:00.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatMessage.cshtml",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\ChatMessage.cshtml",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Views\\Home\\ChatMessage.cshtml",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\ChatMessage.cshtml",
+              "RelativeToolTip": "ThreadMapLLM\\Views\\Home\\ChatMessage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-24T19:41:36.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ThreadMapLLM\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAIwDcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T11:39:08.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ThreadMapLLM\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-20T11:28:32.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ChatViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Models\\ChatViewModel.cs",
+              "RelativeDocumentMoniker": "ThreadMapLLM\\Models\\ChatViewModel.cs",
+              "ToolTip": "C:\\Users\\Pelle\\source\\repos\\ThreadMapLLM\\ThreadMapLLM\\Models\\ChatViewModel.cs",
+              "RelativeToolTip": "ThreadMapLLM\\Models\\ChatViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T11:25:42.634Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ThreadMapLLM/1.0.0": {
+        "dependencies": {
+          "HuggingFaceApiClient": "1.0.0"
+        },
+        "runtime": {
+          "ThreadMapLLM.dll": {}
+        }
+      },
+      "HuggingFaceApiClient/1.0.0": {
+        "runtime": {
+          "HuggingFaceApiClient.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ThreadMapLLM/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HuggingFaceApiClient/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

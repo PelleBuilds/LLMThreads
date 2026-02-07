@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../Huggingface-api-Client-/Ai/HuggingFaceApiClient.csproj" />
+  <Project Path="ThreadMapLLM/ThreadMapLLM.csproj" />
+</Solution>
