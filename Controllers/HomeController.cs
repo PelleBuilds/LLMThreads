@@ -43,8 +43,8 @@ namespace ThreadMapLLM.Controllers
             }
 
 
-            var response = await huggingFace.Query(userInput);
-            //var response = "hej";// for testing
+            //var response = await huggingFace.Query(userInput);
+            var response = "hej";// for testing
             var myModel = new ChatViewModel();
             myModel.Response = response;
 
@@ -62,8 +62,8 @@ namespace ThreadMapLLM.Controllers
 
         public async Task<IActionResult> nestedMessage(string userInput)
         {
-            var response = await huggingFace.Query(userInput);
-            //var response = "hej";// for testing
+            //var response = await huggingFace.Query(userInput);
+            var response = "hej";// for testing
             var myModel = new ChatViewModel();
             myModel.Response = response;
             return PartialView("Chatmessage", myModel);
