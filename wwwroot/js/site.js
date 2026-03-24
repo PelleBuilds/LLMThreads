@@ -92,9 +92,9 @@ async function genereraKodFrånAI() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: `userInput=${encodeURIComponent(message)}`
     });
-    const data = await response.text(); // Anta att detta är ren kodsträng
+    const data = await response.json(); // Anta att detta är ren kodsträng
     
-    const event = new CustomEvent('update-ai-code', { detail: data });
+    const event = new CustomEvent('update-ai-code', { detail: data.generatedCode });
     window.dispatchEvent(event);
 
     //chatWindow.insertAdjacentHTML('beforeend', data);
