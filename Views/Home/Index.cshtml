@@ -29,7 +29,9 @@
         </div>
 
         <div class="col-auto border " style="position: fixed; right: 0; width: 20%; height:100%;" id="sidebar-left">
-                
+            <div id="sandpack-widget-root" data-initial-code="export default function App() { return <h1>Hej!</h1> }"></div>
+
+            <script type="module" src="~/js/react-widget/sandpack-widget.js"></script>
         </div>
         <div class="col-auto border " style="position: fixed; left: 0; width: 20%; height:100%;" id="sidebar-right">
 
@@ -39,7 +41,7 @@
     <div class="input-group w-50 mx-auto shadow mb-4">
 
         <input type="text" id="userInputField" class="form-control text-bg-dark" placeholder="Type your query..." />
-        <button type="button" onclick="sendMessage()" class="btn btn-primary">Skicka</button>
+        <button type="button" onclick="genereraKodFrånAI()" class="btn btn-primary">Skicka</button>
 
     </div>
     

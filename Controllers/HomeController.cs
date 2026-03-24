@@ -23,10 +23,6 @@ namespace ThreadMapLLM.Controllers
             return View(Model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -53,20 +49,37 @@ namespace ThreadMapLLM.Controllers
 
         }
 
-        public IActionResult NewThread()
+        public async Task<IActionResult> GenerateCode(string userInput)
         {
-            var myModel = new ChatViewModel();
-            myModel.newthread = true;
-            return PartialView("StartNewThread", myModel);
-        }
+            if (string.IsNullOrEmpty(userInput))
+            {
+                return View("Index");
+            }
+            
+            var prompt = $"You are a tool used for generating react code based on user prompts," +
+                $" yor task is generating the code that is fed into an Sandpack Preview, " +
+                $"therefore you should only respond in code that will run straight away in sandpack," +
+                $"generate code that matches the following criteria: {userInput} respond in code and nothing else, no explanation or any text that isnt code";
 
-        public async Task<IActionResult> nestedMessage(string userInput)
-        {
-            var response = await huggingFace.Query(userInput);
-            //var response = "hej";// for testing
+            var response = await huggingFace.Query(prompt);
             var myModel = new ChatViewModel();
             myModel.Response = response;
-            return PartialView("Chatmessage", myModel);
+            return View(response);
         }
+        //public IActionResult NewThread()
+        //{
+        //    var myModel = new ChatViewModel();
+        //    myModel.newthread = true;
+        //    return PartialView("StartNewThread", myModel);
+        //}
+
+        //public async Task<IActionResult> nestedMessage(string userInput)
+        //{
+        //    var response = await huggingFace.Query(userInput);
+        //    //var response = "hej";// for testing
+        //    var myModel = new ChatViewModel();
+        //    myModel.Response = response;
+        //    return PartialView("Chatmessage", myModel);
+        //}
     }
 }

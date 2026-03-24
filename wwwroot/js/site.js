@@ -35,48 +35,72 @@ async function sendMessage() {
         console.error("Fel vid anrop:", err);
     }
 }
-async function nestedMessage() {
-    const thread = document.getElementById("thread");
-    const input = document.getElementById("threadInputField");
-    const message = input.value;
+//async function nestedMessage() {
+//    const thread = document.getElementById("thread");
+//    const input = document.getElementById("threadInputField");
+//    const message = input.value;
 
-    thread.innerHTML += `<div class="p-3 ms-3 text-white text-end border mt-5 mb-5 rounded-3 "><strong>Du:</strong> ${message}</div>`;
-    input.value = "";
+//    thread.innerHTML += `<div class="p-3 ms-3 text-white text-end border mt-5 mb-5 rounded-3 "><strong>Du:</strong> ${message}</div>`;
+//    input.value = "";
 
-    try {
-        // Anropa din Controller
-        const response = await fetch('/Home/Chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `userInput=${encodeURIComponent(message)}`
-        });
+//    try {
+//        // Anropa din Controller
+//        const response = await fetch('/Home/Chat', {
+//            method: 'POST',
+//            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//            body: `userInput=${encodeURIComponent(message)}`
+//        });
 
-        if (response.ok) {
-            const html = await response.text();
-            thread.insertAdjacentHTML('beforeend', html);
+//        if (response.ok) {
+//            const html = await response.text();
+//            thread.insertAdjacentHTML('beforeend', html);
             
-        }
-    } catch (err) {
-        console.error("Fel vid anrop:", err);
-    }
+//        }
+//    } catch (err) {
+//        console.error("Fel vid anrop:", err);
+//    }
 
-    thread.innerHTML += document.html("StartNewThread");
-}
-async function newThread() {
-    const chatWindow = document.getElementById("chat-window");
-    const thread = document.getElementById("thread");
+//    thread.innerHTML += document.html("StartNewThread");
+//}
+//async function newThread() {
+//    const chatWindow = document.getElementById("chat-window");
+//    const thread = document.getElementById("thread");
 
-    // Anropa din Controller
-    const response = await fetch('/Home/NewThread', {
-        method: 'POST'
-    });
-    if (response.ok) {
-        const html = await response.text();
-        thread.insertAdjacentHTML('beforeend', html);
-    }
+//    // Anropa din Controller
+//    const response = await fetch('/Home/NewThread', {
+//        method: 'POST'
+//    });
+//    if (response.ok) {
+//        const html = await response.text();
+//        thread.insertAdjacentHTML('beforeend', html);
+//    }
 
-    thread.innerHTML += document.html("StartNewThread");
+//    thread.innerHTML += document.html("StartNewThread");
 
    
 
+//}
+
+// Denna kod ligger i ditt MVC-projekt
+async function genereraKodFrånAI() {
+    const input = document.getElementById("userInputField");
+    const message = input.value;
+    /*const chatWindow = document.getElementById("chat-window");*/
+    // 1. Anropa din C# Controller
+    const response = await fetch('/Home/GenerateCode', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `userInput=${encodeURIComponent(message)}`
+    });
+    const data = await response.text(); // Anta att detta är ren kodsträng
+    
+    const event = new CustomEvent('update-ai-code', { detail: data });
+    window.dispatchEvent(event);
+
+    //chatWindow.insertAdjacentHTML('beforeend', data);
+    //chatWindow.scrollTop = chatWindow.scrollHeight;
+    // 2. Skicka koden till React-widgeten (Sandpack)
+    // Vi använder ett "CustomEvent" för att prata över gränsen
+   
+    
 }

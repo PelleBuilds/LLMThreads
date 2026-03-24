@@ -1,4 +1,8 @@
 <Solution>
   <Project Path="../Huggingface-api-Client-/Ai/HuggingFaceApiClient.csproj" />
+  <Project Path="../ReactComponents/reactcomponents.esproj">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="ThreadMapLLM.csproj" />
 </Solution>
