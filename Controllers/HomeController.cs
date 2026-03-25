@@ -39,8 +39,8 @@ namespace ThreadMapLLM.Controllers
             }
 
 
-            var response = await huggingFace.Query(userInput);
-            //var response = "hej";// for testing
+            //var response = await huggingFace.Query(userInput);
+            var response = "hej";// for testing
             var myModel = new ChatViewModel();
             myModel.Response = response;
 
@@ -62,17 +62,13 @@ namespace ThreadMapLLM.Controllers
                 $"generate code that matches the following criteria: {userInput}," +
                 $" respond in code and nothing else, no explanation or any text that isnt code";
 
-            try
-            {
-                var response = await huggingFace.Query(prompt);
-                    response = response.Replace("```jsx\n", "").Replace("```javascript\n", "").Replace("```", "");
-                var myModel = new ChatViewModel();
-                myModel.Response = response;
-                return Json(new { generatedCode = response });
-            }
-            catch (HttpRequestException e) { 
-             return PartialView("ChatMessage",e);
-            }
+        public async Task<IActionResult> nestedMessage(string userInput)
+        {
+            //var response = await huggingFace.Query(userInput);
+            var response = "hej";// for testing
+            var myModel = new ChatViewModel();
+            myModel.Response = response;
+            return PartialView("Chatmessage", myModel);
         }
         //public IActionResult NewThread()
         //{
