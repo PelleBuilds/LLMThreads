@@ -59,13 +59,20 @@ namespace ThreadMapLLM.Controllers
             var prompt = $"You are a tool used for generating react code based on user prompts," +
                 $" your task is generating the code that is fed into an Sandpack Preview, " +
                 $"therefore you should only respond in code that will run straight away in sandpack," +
-                $"generate code that matches the following criteria: {userInput} respond in code and nothing else, no explanation or any text that isnt code";
+                $"generate code that matches the following criteria: {userInput}," +
+                $" respond in code and nothing else, no explanation or any text that isnt code";
 
-            var response = await huggingFace.Query(prompt);
-            response = response.Replace("```jsx\n", "").Replace("```javascript\n", "").Replace("```", "");
-            var myModel = new ChatViewModel();
-            myModel.Response = response;
-            return Json(new { generatedCode = response });
+            try
+            {
+                var response = await huggingFace.Query(prompt);
+                    response = response.Replace("```jsx\n", "").Replace("```javascript\n", "").Replace("```", "");
+                var myModel = new ChatViewModel();
+                myModel.Response = response;
+                return Json(new { generatedCode = response });
+            }
+            catch (HttpRequestException e) { 
+             return PartialView("ChatMessage",e);
+            }
         }
         //public IActionResult NewThread()
         //{

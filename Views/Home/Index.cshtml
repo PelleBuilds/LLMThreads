@@ -18,7 +18,7 @@
 @model ChatViewModel
 <body class="bg-dark border">
     
-    <div class="row  justify-content-center">
+    <div class="row g-0 justify-content-center">
         <div class="text-center mt-5 mb-5 rounded-3 shadow col-md-7" style=" width:60%;"id="chat">
 
              <h1 id="welcome-text" class="text-white mb-4">How can I help?</h1>
@@ -28,12 +28,12 @@
 
         </div>
 
-        <div class="col-auto border " style="position: fixed; right: 0; width: 20%; height:100%;" id="sidebar-left">
-            <div id="sandpack-widget-root" data-initial-code="export default function App() { return <h1>Hej!</h1> }"></div>
+        <div class="@* col-auto *@ border p-0 " style="position: fixed; right: 0; width: 20%; height:100%; overflow: hidden;" id="sidebar-right">
+            <div id="sandpack-widget-root" data-initial-code="export default function App() { return <h1>Hej!</h1> }" style="height:100%; width:100%;"></div>
 
             <script type="module" src="~/js/react-widget/sandpack-widget.js"></script>
         </div>
-        <div class="col-auto border " style="position: fixed; left: 0; width: 20%; height:100%;" id="sidebar-right">
+        <div class="col-auto border " style="position: fixed; left: 0; width: 20%; height:100%;" id="sidebar-left">
 
         </div>
     </div>
