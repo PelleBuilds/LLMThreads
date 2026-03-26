@@ -50,8 +50,3 @@ body {
     scrollbar-width: none; /* Firefox */
 }
 
-.glass-effect {
-    background: rgba(255, 255, 255, 0.2); /* Genomskinlig färg behövs */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* För Safari-stöd */
-}

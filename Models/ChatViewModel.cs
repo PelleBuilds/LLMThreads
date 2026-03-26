@@ -2,8 +2,12 @@
 {
     public class ChatViewModel
     {
-        //public string? UserInput { get; set; }
-        public string? Response { get; set; }
-        public bool newthread { get; set; } 
+        public string? ConversationId { get; set; }
+        public string? UserId { get; set; }
+        public List<ChatMessageViewModel>? ChatMessages { get; set; }
+
+        public bool IsDeleted = false;
+
+        
     }
 }

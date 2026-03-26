@@ -9,7 +9,7 @@ namespace ThreadMapLLM.Controllers
 {
     public class HomeController : Controller
     {
-        public IHuggingFaceClient huggingFace;
+        private IHuggingFaceClient huggingFace;
         private ChatViewModel Model { get; set; } 
 
         public HomeController(IHuggingFaceClient aiClient)
@@ -29,26 +29,58 @@ namespace ThreadMapLLM.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpPost]
-        public async Task<IActionResult> Chat(string userInput)
+
+        public async Task<IActionResult> UserMessage(string userInput)
         {
-            
             if (string.IsNullOrEmpty(userInput))
             {
                 return View("Index");
             }
 
-
-            var response = await huggingFace.Query(userInput);
-            //var response = "hej";// for testing
-            var myModel = new ChatViewModel();
-            myModel.Response = response;
-
-           
-            return PartialView("ChatMessage", myModel);
+            var chatmessage = new ChatMessageViewModel
+            {
+                Content = userInput,
+                Role = "User",
+                TimeStamp = DateTime.Now
+            };
+            try
+            {
+                var modelresponse = await Chat(userInput);
+            }
+            catch (Exception? ex) 
+            { 
+                return PartialView("ChatMessage", ex);
+            }
+            
+            return PartialView("ChatMessage", chatmessage);
 
         }
+        [HttpPost]
+        public async Task<ChatMessageViewModel> Chat(string userInput)
+        {
+            
+            if (string.IsNullOrEmpty(userInput))
+            {
+                return null;
+            }
 
+
+            //var response = await huggingFace.Query(userInput);
+            var response = "hej";// for testing
+
+            var chatmessage = new ChatMessageViewModel
+            {
+                Content = response,
+                Role = "Assistant",
+                TimeStamp = DateTime.Now
+            };
+            //myModel.Response = response;
+
+
+            return chatmessage;/*PartialView("ChatMessage", chatmessage);*/
+
+        }
+        [HttpPost]
         public async Task<IActionResult> GenerateCode(string userInput)
         {
             if (string.IsNullOrEmpty(userInput))
@@ -65,29 +97,16 @@ namespace ThreadMapLLM.Controllers
             try
             {
                 var response = await huggingFace.Query(prompt);
-                    response = response.Replace("```jsx\n", "").Replace("```javascript\n", "").Replace("```", "");
-                var myModel = new ChatViewModel();
-                myModel.Response = response;
+                //var myModel = new ChatViewModel();
+                //myModel.Response = response;
+                response = response.Replace("```jsx\n", "").Replace("```javascript\n", "").Replace("```", "");
                 return Json(new { generatedCode = response });
             }
-            catch (HttpRequestException e) { 
+            catch (HttpRequestException e) 
+            { 
              return PartialView("ChatMessage",e);
             }
         }
-        //public IActionResult NewThread()
-        //{
-        //    var myModel = new ChatViewModel();
-        //    myModel.newthread = true;
-        //    return PartialView("StartNewThread", myModel);
-        //}
-
-        //public async Task<IActionResult> nestedMessage(string userInput)
-        //{
-        //    var response = await huggingFace.Query(userInput);
-        //    //var response = "hej";// for testing
-        //    var myModel = new ChatViewModel();
-        //    myModel.Response = response;
-        //    return PartialView("Chatmessage", myModel);
-        //}
+        
     }
 }
