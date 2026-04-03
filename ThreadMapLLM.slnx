@@ -1,6 +1,6 @@
 <Solution>
   <Project Path="../Huggingface-api-Client-/Ai/HuggingFaceApiClient.csproj" />
-  <Project Path="../ReactComponents/reactcomponents.esproj">
+  <Project Path="reactcomponents/reactcomponents.esproj">
     <Build />
     <Deploy />
   </Project>
