@@ -4,19 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net.Http;
 using ThreadMapLLM.Models;
+using ThreadMapLLM.Services;
 
 namespace ThreadMapLLM.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IHuggingFaceClient aiClient) : Controller
     {
-        private IHuggingFaceClient huggingFace;
-        private ChatViewModel Model { get; set; } 
+        private IHuggingFaceClient huggingFace = aiClient;
+        private readonly OllamaApiService ollama = new();
+        private ChatViewModel Model { get; set; }
 
-        public HomeController(IHuggingFaceClient aiClient)
-        {
-            huggingFace = aiClient;
-            
-        }
         public IActionResult Index()
         {
             Model = new ChatViewModel();
@@ -46,13 +43,14 @@ namespace ThreadMapLLM.Controllers
             try
             {
                 var modelresponse = await Chat(userInput);
+                return PartialView("ChatMessage", modelresponse);
             }
             catch (Exception? ex) 
             { 
                 return PartialView("ChatMessage", ex);
             }
             
-            return PartialView("ChatMessage", chatmessage);
+            
 
         }
         [HttpPost]
@@ -65,8 +63,8 @@ namespace ThreadMapLLM.Controllers
             }
 
 
-            //var response = await huggingFace.Query(userInput);
-            var response = "hej";// for testing
+            var response = await ollama.Query(userInput);
+            //var response = "hej";// for testing
 
             var chatmessage = new ChatMessageViewModel
             {
@@ -96,7 +94,7 @@ namespace ThreadMapLLM.Controllers
 
             try
             {
-                var response = await huggingFace.Query(prompt);
+                var response = await ollama.Query(prompt);
                 //var myModel = new ChatViewModel();
                 //myModel.Response = response;
                 response = response.Replace("```jsx\n", "").Replace("```javascript\n", "").Replace("```", "");
