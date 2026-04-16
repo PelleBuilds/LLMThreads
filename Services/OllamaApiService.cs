@@ -17,7 +17,7 @@ namespace ThreadMapLLM.Services
         {
             var payload = new
             {
-                model = "gemma3:4b",
+                model = "gemma3:4b",//change to model of your liking
                 prompt = query,
                 stream = false
             };
