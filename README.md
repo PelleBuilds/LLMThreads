@@ -1,3 +1,4 @@
 # LLMThreads
 This is a simple webapp for ai powered code generation and prototyping.
-Currently in early stages and requires setting a Huggingface api key as an enviromental variable 
+Currently only works with local Ollama instances 
+Requires you to have ollama installed on your computer or create a new api service for your specific api
