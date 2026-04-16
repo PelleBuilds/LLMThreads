@@ -1,4 +1,4 @@
-using HuggingFaceApiClient;
+
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -8,9 +8,9 @@ using ThreadMapLLM.Services;
 
 namespace ThreadMapLLM.Controllers
 {
-    public class HomeController(IHuggingFaceClient aiClient) : Controller
+    public class HomeController() : Controller
     {
-        private IHuggingFaceClient huggingFace = aiClient;
+        
         private readonly OllamaApiService ollama = new();
         private ChatViewModel Model { get; set; }
 

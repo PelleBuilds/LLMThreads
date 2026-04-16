@@ -1,4 +1,4 @@
-using HuggingFaceApiClient;
+
 using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 
 
-try
+/*try
 {
     var secret = builder.Configuration["apikey"];
     builder.Services.AddHttpClient<IHuggingFaceClient, HuggingFaceClient>(client =>
@@ -20,7 +20,7 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"Error configuring HuggingFaceClient: {ex.Message}");
-}
+}*/
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.

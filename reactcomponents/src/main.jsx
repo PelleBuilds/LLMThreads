@@ -1,8 +1,8 @@
 // I din React-mapp: src/main.jsx
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Sandpack } from "@codesandbox/sandpack-react";
-import { SandpackProvider, SandpackPreview } from "@codesandbox/sandpack-react";
+//import { Sandpack } from "@codesandbox/sandpack-react";
+import { SandpackProvider, SandpackPreview, SandpackCodeEditor } from "@codesandbox/sandpack-react";
 
 const SandpackWidget = ({ initialCode }) => {
     const [code, setCode] = useState(initialCode);

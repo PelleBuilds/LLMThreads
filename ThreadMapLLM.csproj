@@ -9,8 +9,4 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Huggingface-api-Client-\Ai\HuggingFaceApiClient.csproj" />
-  </ItemGroup>
-
 </Project>
