@@ -1,6 +1,11 @@
-﻿namespace ThreadMapLLM.Models
+﻿using Microsoft.AspNetCore.Identity;
+namespace ThreadMapLLM.Models
 {
-    public class User
+    public class User : IdentityUser
     {
+
+        public List<ChatViewModel>? Chats;
+
+
     }
 }
