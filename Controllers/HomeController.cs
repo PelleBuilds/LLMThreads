@@ -3,23 +3,27 @@ using System.Diagnostics;
 using ThreadMapLLM.Models;
 using ThreadMapLLM.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ThreadMapLLM.Controllers
 {
     public class HomeController: Controller
     {
-        //private User _user = user;
+        
+        //private User _user;
         private readonly OllamaApiService ollama = new();
         public required ChatViewModel model { get; set; }
 
-        public HomeController()
+        public HomeController(/*User user*/)
         {
+            //this._user = user;
             model = new ChatViewModel
             {
                 UserId = "hej",
                 ConversationId = "hej"
             };
         }
+        
         public IActionResult Index()
         {
             
@@ -77,8 +81,8 @@ namespace ThreadMapLLM.Controllers
             try
             {
 
-                response = await ollama.Query(Input);
-                //response = "hej";// for testing
+               // response = await ollama.Query(Input);
+                response = "hej";// for testing
 
                 var chatmessage = new ChatMessageViewModel
                 {

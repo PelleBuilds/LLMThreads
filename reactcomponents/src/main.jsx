@@ -26,7 +26,7 @@ const SandpackWidget = ({ initialCode }) => {
     });
     return (
         <div style={{
-            height: "100vh",
+            /*height: "100vh",*/
             width: "100%",
             display: "flex",
             flex: 1,

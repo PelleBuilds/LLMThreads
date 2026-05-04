@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.DataProtection;
+using ThreadMapLLM.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-
+User user = new User
+{
+    UserId = "1",
+    Username = "test",
+    Password = "test"
+};
 /*try
 {
     var secret = builder.Configuration["apikey"];
@@ -40,7 +46,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Login}/{action=LoginPage}/{id?}")
     .WithStaticAssets();
 
 
