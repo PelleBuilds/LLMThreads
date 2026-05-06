@@ -9,17 +9,25 @@ namespace ThreadMapLLM.Controllers
 {
     public class HomeController: Controller
     {
-        
-        //private User _user;
+        private MongoDBClient? _mongoDBClient;
+        private User _user;
         private readonly OllamaApiService ollama = new();
         public required ChatViewModel model { get; set; }
 
-        public HomeController(/*User user*/)
+        public HomeController(MongoDBClient mongoDBClient/*, User user*/)
         {
-            //this._user = user;
+            _mongoDBClient = mongoDBClient;
+
+            User testuser = new User
+            {
+                UserId = "1",
+                Username = "test",
+                Password = "test"
+            };
+            this._user = testuser;
             model = new ChatViewModel
             {
-                UserId = "hej",
+                UserId = _user.UserId,
                 ConversationId = "hej"
             };
         }
@@ -57,7 +65,9 @@ namespace ThreadMapLLM.Controllers
             if (!generateCode)
             {
                 var modelresponse = await Chat(userInput);
+                await _mongoDBClient.AddAsync(model);
                 return PartialView("ChatMessage", modelresponse);
+               
             }
             else
             {
@@ -65,6 +75,7 @@ namespace ThreadMapLLM.Controllers
                 return Json(new { generatedCode = modelresponse });
                 //return PartialView("ChatMessage", modelresponse);
             }
+           
             
         }
 
@@ -82,7 +93,7 @@ namespace ThreadMapLLM.Controllers
             {
 
                // response = await ollama.Query(Input);
-                response = "hej";// for testing
+                response = "hej "+_user.Username;// for testing
 
                 var chatmessage = new ChatMessageViewModel
                 {

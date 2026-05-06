@@ -1,6 +1,8 @@
 
 using Microsoft.AspNetCore.DataProtection;
+using MongoDB.Driver;
 using ThreadMapLLM.Models;
+using ThreadMapLLM.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,12 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-User user = new User
-{
-    UserId = "1",
-    Username = "test",
-    Password = "test"
-};
+var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI");
+
+builder.Services.AddSingleton<IMongoClient>(sp =>
+    new MongoClient(connectionString));
+builder.Services.AddScoped<MongoDBClient>();
 /*try
 {
     var secret = builder.Configuration["apikey"];
@@ -27,7 +28,7 @@ catch (Exception ex)
 {
     Console.WriteLine($"Error configuring HuggingFaceClient: {ex.Message}");
 }*/
-    var app = builder.Build();
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
