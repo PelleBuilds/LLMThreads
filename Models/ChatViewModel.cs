@@ -4,7 +4,7 @@
     {
         public required string ConversationId { get; set; }
         public required string UserId { get; set; } 
-        public List<ChatMessageViewModel> ChatMessages { get; set; } = new();
+        public required List<ChatMessageViewModel?> ChatMessages { get; set; }
 
         public bool IsDeleted = false;
 
