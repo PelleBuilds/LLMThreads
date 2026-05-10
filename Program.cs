@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.DataProtection;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Configuration;
 using ThreadMapLLM.Models;
 using ThreadMapLLM.Services;
 
@@ -10,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI");
+//var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI");
+var connectionString = builder.Configuration["MONGODB_URI"];
 
 builder.Services.AddSingleton<IMongoClient>(sp =>
     new MongoClient(connectionString));

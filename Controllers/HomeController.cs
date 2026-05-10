@@ -12,11 +12,11 @@ namespace ThreadMapLLM.Controllers
         private MongoDBClient _mongoDBClient;
         private User _user;
         private readonly OllamaApiService ollama = new();
-        public required ChatViewModel model { get; set; }
+        public ChatViewModel _model { get; set; }
+        public Chat chat { get; set; }
 
         public HomeController(MongoDBClient mongoDBClient/*, User user*/)
         {
-            _mongoDBClient = mongoDBClient;
 
             User testuser = new User
             {
@@ -24,19 +24,39 @@ namespace ThreadMapLLM.Controllers
                 Username = "test",
                 Password = "test"
             };
+
             this._user = testuser;
-            model = new ChatViewModel
+
+            chat = new Chat
             {
                 UserId = _user.UserId,
-                ConversationId = "hej",
+                ConversationId = "hej1",
                 ChatMessages = new List<ChatMessageViewModel?>()
             };
+
+            this.chat = chat;
+
+            _model = new ChatViewModel
+            {
+                Chats = new List<Chat>(),
+
+            };
+            //GetChat(testuser.UserId);
+            _mongoDBClient = mongoDBClient;
+
         }
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             
-            return View(model);
+                var allChats = await _mongoDBClient.GetAllChats(_user.UserId);
+                _model.Chats = allChats ?? new List<Chat>();
+            
+            
+            
+            
+
+            return View(_model);
         }
 
 
@@ -46,7 +66,7 @@ namespace ThreadMapLLM.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<IActionResult> UserMessage(string userInput, bool generateCode)
+        public async Task<IActionResult> UserMessage(string userInput, bool generateCode, string conversationId)
         {
 
             if (string.IsNullOrEmpty(userInput))
@@ -60,69 +80,65 @@ namespace ThreadMapLLM.Controllers
                 Role = "User",
                 TimeStamp = DateTime.Now
             };
-           
-           
-            
-            model.ChatMessages.Add(chatmessage);
-            
-            
+
+            if(chat.ConversationId != conversationId)
+            {
+                _model.Chats.Add(chat);
+            }
+
+            chat.ChatMessages.Add(chatmessage);
 
             if (!generateCode)
             {
-                var modelresponse = await Chat(userInput);
-                await _mongoDBClient.UpdateOneAsync(model.ConversationId, chatmessage);
-                await _mongoDBClient.UpdateOneAsync(model.ConversationId, modelresponse!);
+                var modelresponse = ConvertToMessage(await GenerateText(userInput));
+                
+                await _mongoDBClient.SaveChatAsync(chat);
+
                 return PartialView("ChatMessage", modelresponse);
                
             }
             else
             {
                 var modelresponse = await GenerateCode(userInput);
+                var modelResponseMessage =  ConvertToMessage(modelresponse);
+
+                await _mongoDBClient.SaveChatAsync(chat);
+                
                 return Json(new { generatedCode = modelresponse });
                 //return PartialView("ChatMessage", modelresponse);
             }
-           
             
+
+
+        }
+        public ChatMessageViewModel ConvertToMessage(string message)
+        {
+            var chatmessage = new ChatMessageViewModel
+            {
+                Content = message,
+                Role = "Assistant",
+                TimeStamp = DateTime.Now
+            };
+
+            chat.ChatMessages.Add(chatmessage);
+
+            return chatmessage;
         }
 
         [HttpPost]
-        public async Task<ChatMessageViewModel?> Chat(string Input)
+        public async Task<string> GenerateText(string Input)
         {
             var response = "";
-            
-            if (string.IsNullOrEmpty(Input))
-            {
-                return null;
-            }
 
             try
             {
-
-               // response = await ollama.Query(Input);
-                response = "hej "+_user.Username;// for testing
-
-                var chatmessage = new ChatMessageViewModel
-                {
-                    Content = response,
-                    Role = "Assistant",
-                    TimeStamp = DateTime.Now
-                };
-
-                model.ChatMessages.Add(chatmessage);
-
-                return chatmessage;
-
+                response = await ollama.Query(Input);
+               // response = "hej "+_user.Username;// for testing
+                return response;
             }
-            catch (HttpRequestException? ex) 
+            catch (HttpRequestException ex) 
             {
-
-                return new ChatMessageViewModel 
-                {
-                    Content = "The agent is not avalible right now" + ex,// for easier debugging create logging service later
-                    Role = "System",
-                    TimeStamp = DateTime.Now
-                };
-
+                return "The agent is not avalible right now" + ex;// for easier debugging create logging service later
             }
             
         }
@@ -157,6 +173,17 @@ namespace ThreadMapLLM.Controllers
                 
 
         }
-        
+
+        //public async void GetChat(string userID)
+        //{
+
+        //    var allChats= await _mongoDBClient.GetAllChats(userID);
+        //    foreach (Chat chat in allChats) 
+        //    {
+        //    model.Chats.Add(chat);
+        //    }
+            
+        //}
+
     }
 }

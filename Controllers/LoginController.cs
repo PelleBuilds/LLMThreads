@@ -33,7 +33,7 @@ namespace ThreadMapLLM.Controllers
                     {
                         //_signInManager.PasswordSignInAsync(model.Username, model.Password, false, false).Wait();
 
-                        return View("Index");
+                        return RedirectToAction("Index", "Home");
                     }
                     else if (model != null && model.Action.Equals("ForgotPassword"))
                     {

@@ -39,6 +39,32 @@ async function sendMessage() {
         console.error("Fel vid anrop:", err);
     }
 }
+//async function loadPreviousChats() {
+
+//    const sidebar = document.getElementById("sidebar-left")
+
+//    try {
+//        const response = await fetch('/home/GetChat', {
+//            method: 'POST',
+//            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//            body: params
+//        });
+
+//        if (response.ok) {
+//            const html = await response.text();
+//            for (Const C in html) {
+//                sidebar.innerHTML += `<div class="p-3 ms-3 text-white text-end border mt-5 mb-5 rounded-3 "><strong>You:</strong> ${C}</div>`;
+//            }
+//            sidebar.insertAdjacentHTML('beforeend', html);
+//            /*chatWindow.scrollTop = chatWindow.scrollHeight;*/
+//        }
+//    }
+//    catch (ex) {
+//        console.error("Fel vid anrop:", ex);
+//    }
+
+//}
+
 async function codeChatToggle() {
 
 

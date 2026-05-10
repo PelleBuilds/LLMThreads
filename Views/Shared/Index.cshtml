@@ -30,11 +30,21 @@
 
             <script type="module" src="~/js/react-widget/sandpack-widget.js"></script>
         </div>
+
         <div class="col-auto border " style="position: fixed; left: 0; width: 20%; height:100%;" id="sidebar-left">
             <div class=" border text-white text-center bold " style="position: fixed; top: 0; width: 20%; height: 10%;">
                 Chats
+            </div>@foreach(Chat chat in Model.Chats)
+                {
+                <div class="border mx-2 text-white">
+                        @chat.ConversationId hej
+                    </div>
+                }
+                <div>
+
             </div>
         </div>
+
         <div class="input-group w-50 mx-auto shadow mb-4" style="position:fixed; bottom:5vh;">
 
             <input type="text" id="userInputField" class="form-control text-bg-dark" placeholder="Type your query..." />

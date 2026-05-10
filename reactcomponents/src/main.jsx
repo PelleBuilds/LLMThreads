@@ -66,3 +66,5 @@ if (rootElement) {
     const initialCode = rootElement.dataset.initialCode || "";
     ReactDOM.createRoot(rootElement).render(<SandpackWidget initialCode={initialCode} />);
 }
+
+const chatSelector =
