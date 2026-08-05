@@ -1,5 +1,5 @@
 # LLMThreads
-This is a simple webapp for ai powered code generation and prototyping.
-Currently only works with local Ollama instances 
-Requires you to have ollama installed on your computer or create a new api service for your specific api
-Configure your preffered LLM model in the OllamaApiService
+This is a webapp for chatting and ai powered code generation.
+Works with local Ollama instances and requires you to have ollama installed on your computer.
+This app also uses MongoDB Atlas for storage of chats but will work without configuring a Mongodb database although saving will be disabled.
+
