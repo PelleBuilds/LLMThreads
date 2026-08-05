@@ -89,7 +89,9 @@ async function generateCode() {
 
     if (welcomeText) welcomeText.style.display = 'none';
 
-    chatWindow.innerHTML += `<div class="p-3 ms-3 text-white text-end border mt-5 mb-5 rounded-3 "><strong>You:</strong> ${message}</div>`;
+    chatWindow.innerHTML += `<div class="d-flex justify-content-end mb-3">
+                             <div class="user-message">
+                             ${message}</div></div>`;
     input.value = "";
 
     try

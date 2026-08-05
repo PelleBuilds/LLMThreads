@@ -59,19 +59,15 @@ body {
 }
 
 #chat {
-    background: #161b22;
+    
     height: 100vh;
-    overflow: hidden;
+    /*overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;*/
 }
 
 
 #chat-window {
-    /*scrollbar-width: none;
-    height: calc(100vh - 120px);
-    overflow-y: auto;
-    padding-bottom: 150px;*/
     flex: 1;
     min-height: 0;
     overflow-y: auto;
@@ -130,4 +126,6 @@ input::placeholder {
     word-break: break-word;
 }
 
-
+.ai-message{
+    word-break:break-word
+}

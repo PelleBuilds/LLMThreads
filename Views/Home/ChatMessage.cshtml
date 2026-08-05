@@ -1,10 +1,7 @@
 ﻿@model ThreadMapLLM.Models.ChatMessageViewModel
 
-<div class="p-3 ms-3 text-white border rounded-3 mt-5 mb-5 ai-message">
-    @* <strong>AI:</strong> *@
-    @* <pre style="white-space: pre-wrap;">@Model.Content</pre> *@
-    @* <button type="button" onclick="newThread()" class="btn btn-primary">+</button> *@
-    <pre class="ai-content">@Model.Content</pre>
-    
+<div class="p-3 ms-3 text-white rounded-3 mt-5 mb-5 ai-message">
+
+    <pre class="ai-content" style="white-space: pre-wrap;">@Model.Content</pre>
 
 </div>
