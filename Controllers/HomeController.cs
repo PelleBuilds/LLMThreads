@@ -9,7 +9,7 @@ namespace ThreadMapLLM.Controllers
 {
     public class HomeController: Controller
     {
-        private MongoDBClient _mongoDBClient;
+        private MongoDBClient? _mongoDBClient;
         private User _user;
         private readonly OllamaApiService ollama = new();
         public ChatViewModel _model { get; set; }
@@ -48,9 +48,16 @@ namespace ThreadMapLLM.Controllers
         
         public async Task<IActionResult> Index()
         {
-            
+            try
+            {
                 var allChats = await _mongoDBClient.GetAllChats(_user.UserId);
                 _model.Chats = allChats ?? new List<Chat>();
+            }
+            catch (Exception ex) 
+            {
+                return View(_model);
+            }
+                
             
             
             
@@ -92,7 +99,7 @@ namespace ThreadMapLLM.Controllers
             {
                 var modelresponse = ConvertToMessage(await GenerateText(userInput));
                 
-                await _mongoDBClient.SaveChatAsync(chat);
+                 _mongoDBClient.SaveChatAsync(chat);
 
                 return PartialView("ChatMessage", modelresponse);
                
@@ -102,7 +109,7 @@ namespace ThreadMapLLM.Controllers
                 var modelresponse = await GenerateCode(userInput);
                 var modelResponseMessage =  ConvertToMessage(modelresponse);
 
-                await _mongoDBClient.SaveChatAsync(chat);
+                 _mongoDBClient.SaveChatAsync(chat);
                 
                 return Json(new { generatedCode = modelresponse });
                 //return PartialView("ChatMessage", modelresponse);

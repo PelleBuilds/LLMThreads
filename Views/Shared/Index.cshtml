@@ -13,51 +13,84 @@
    
 </header>
 @model ChatViewModel
-<body class="bg-dark border" style="height: 100vh; overflow:hidden">
-    
-    <div class="row g-0 justify-content-center">
-        <div class="text-center  rounded-3 shadow col-md-7" style=" height: 100vh; width:60%;"id="chat">
+<body class="bg-dark text-white vh-100 overflow-hidden">
 
-             <h1 id="welcome-text" class="text-white mb-4">How can I help?</h1>
-             <div id="chat-window" class="mb-4  text-start no-scrollbar" style="max-height: 100%; overflow-y: auto;">
-                
-            </div>
+    <div class="row g-0 h-100">
 
-        </div>
+        <!-- Left Sidebar -->
+        <div class="col-2 bg-dark  d-flex flex-column" id="sidebar-left">
 
-        <div class="@* col-auto *@ border p-0 " style="position: fixed; right: 0; width: 20%; max-height:100%;" id="sidebar-right">
-            <div id="sandpack-widget-root" data-initial-code="export default function App() { return <h1>Hej!</h1> }" style="height:100%; width:100%;"></div>
-
-            <script type="module" src="~/js/react-widget/sandpack-widget.js"></script>
-        </div>
-
-        <div class="col-auto border " style="position: fixed; left: 0; width: 20%; height:100%;" id="sidebar-left">
-            <div class=" border text-white text-center bold " style="position: fixed; top: 0; width: 20%; height: 10%;">
+            <div class="text-center fw-bold py-3 border-bottom fs-5">
                 Chats
-            </div>@foreach(Chat chat in Model.Chats)
+            </div>
+
+            <div class="flex-grow-1 overflow-auto">
+
+                @foreach (Chat chat in Model.Chats)
                 {
-                <div class="border mx-2 text-white">
-                        @chat.ConversationId hej
-                    </div>
+                    <button class="btn btn-dark text-start rounded-0 border-0 border-bottom w-100 py-3">
+                        @chat.ConversationId
+                    </button>
                 }
-                <div>
 
             </div>
+
         </div>
 
-        <div class="input-group w-50 mx-auto shadow mb-4" style="position:fixed; bottom:5vh;">
+        <!-- Chat -->
+        <div class="col-8 d-flex justify-content-center align-items-center">
 
-            <input type="text" id="userInputField" class="form-control text-bg-dark" placeholder="Type your query..." />
-            <button type="button" onclick="sendMessage()" class="btn btn-primary">Send</button>
-            <button type="button" onclick="generateCode()" class="btn btn-primary">Code</button>
+            <div class="bg-secondary bg-opacity-10 rounded-start-4 shadow-lg p-4 w-100 h-100">
+
+                <h1 id="welcome-text" class="text-center mb-4 fw-light">
+                    How can I help?
+                </h1>
+
+                <div id="chat-window"
+                     class="overflow-y-scroll h-75 pe-2 no-scrollbar">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="col-2 bg-black shadow-lg">
+
+            <div id="sandpack-widget-root"
+                 data-initial-code="export default function App() { return <h1>Hej!</h1> }"
+                 class="h-100 bg-dark w-100">
+            </div>
+
         </div>
 
     </div>
 
-    
+    <div class="position-fixed bottom-0 start-50 translate-middle-x mb-4 w-50" id="userinputgroup">
+
+        <div class="input-group shadow-lg">
+
+            <input id="userInputField"
+                   class="form-control bg-dark text-white "
+                   placeholder="Type your query..." />
+
+            <button onclick="sendMessage()" class="btn btn-dark btn-outline-light ">
+                Send
+            </button>
+
+            <button onclick="generateCode()" class="btn btn-dark btn-outline-light">
+                Code
+            </button>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="~/js/react-widget/sandpack-widget.js"></script>
+
     @section Scripts {
         <script src="~/js/site.js"></script>
     }
-</body>
 
+</body>
 
