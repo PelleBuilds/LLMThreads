@@ -37,7 +37,11 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
-
+#app-row {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
 
 
 #welcome-text {
@@ -59,13 +63,28 @@ body {
 }
 
 #chat {
-    
-    height: 100vh;
-    /*overflow: hidden;
-    display: flex;
-    flex-direction: column;*/
-}
+    /*height: 100vh;*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20%;
+    left: 16.6667%; /* = col-2 bredd, samma som sidebar-left just nu */
+    width: auto;
+    z-index: 2;
 
+}
+#chat-inner {
+    box-shadow: -24px 0 20px -10px rgba(0, 0, 0, .35);
+}
+#sidebar-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 83.3333%; /* = 100% - col-2 bredd */
+    width: auto;
+    z-index: 3;
+}
 
 #chat-window {
     flex: 1;
@@ -73,6 +92,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 130px;
+    padding-inline-end: 20%;
     box-sizing: border-box;
     scrollbar-width: none;
 }
@@ -104,7 +124,10 @@ input::placeholder {
      
 }
 
-
+#sidebar-left {
+    position: relative;
+    z-index: 1;
+}
 
     #userinputgroup button {
         transition: all .2s ease;
@@ -115,7 +138,10 @@ input::placeholder {
             padding-left: 20px;
         }
 
-
+#userinputgroup {
+    z-index: 10;
+    position: fixed; /* har du redan via Bootstrap-klassen, men bra att vara explicit */
+}
 .user-message {
     display: inline-block;
     max-width: 70%;
@@ -129,3 +155,17 @@ input::placeholder {
 .ai-message{
     word-break:break-word
 }
+.resizer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    margin-left: -4px;
+    z-index: 4;
+    cursor: col-resize;
+    background: transparent;
+}
+
+    .resizer:hover, .resizer.dragging {
+        background: rgba(37, 140, 251, .35);
+    }

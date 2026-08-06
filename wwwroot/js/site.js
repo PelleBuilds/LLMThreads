@@ -16,10 +16,10 @@ async function sendMessage() {
     if (!message) return;
 
     if (welcomeText) welcomeText.style.display = 'none';
-    
-    chatWindow.innerHTML += `<div class="d-flex justify-content-end mb-3">
-                             <div class="user-message">
-                             ${message}</div></div>`;
+
+    chatWindow.insertAdjacentHTML('beforeend', `
+                <div class="d-flex justify-content-end mb-3">
+                 <div class="user-message">${message}</div></div>`);
     input.value = "";
 
     try
@@ -89,9 +89,9 @@ async function generateCode() {
 
     if (welcomeText) welcomeText.style.display = 'none';
 
-    chatWindow.innerHTML += `<div class="d-flex justify-content-end mb-3">
-                             <div class="user-message">
-                             ${message}</div></div>`;
+    chatWindow.insertAdjacentHTML('beforeend', `
+                <div class="d-flex justify-content-end mb-3">
+                 <div class="user-message">${message}</div></div>`);
     input.value = "";
 
     try
@@ -114,3 +114,74 @@ async function generateCode() {
         console.error("Fel vid anrop:", err);
     }
 }
+
+(function () {
+    const appRow = document.getElementById('app-row');
+    const chat = document.getElementById('chat');
+    const sidebarRight = document.getElementById('sidebar-right');
+    const resizerLeft = document.getElementById('resizerLeft');
+    const resizerRight = document.getElementById('resizerRight');
+
+    const LEFT_PCT = 2 / 12;
+    const RIGHT_PCT = 2 / 12;
+    const MIN_RIGHT_W = 240;
+    const MIN_CHAT_VISIBLE = 200;
+
+    let chatLeftRatio = LEFT_PCT;
+    let rightLeftRatio = 1 - RIGHT_PCT;
+
+    function applyChatLeft(px) {
+        const leftW = appRow.clientWidth * LEFT_PCT;
+        const clamped = Math.max(0, Math.min(leftW, px));
+        chat.style.left = clamped + 'px';
+        resizerLeft.style.left = clamped + 'px';
+        chatLeftRatio = clamped / appRow.clientWidth;
+    }
+
+    function applyRightLeft(px) {
+        const w = appRow.clientWidth;
+        const clamped = Math.max(MIN_CHAT_VISIBLE, Math.min(w - MIN_RIGHT_W, px));
+        sidebarRight.style.left = clamped + 'px';
+        resizerRight.style.left = clamped + 'px';
+        rightLeftRatio = clamped / w;
+    }
+
+    function init() {
+        const w = appRow.clientWidth;
+        applyChatLeft(w * LEFT_PCT);
+        applyRightLeft(w * (1 - RIGHT_PCT));
+    }
+
+    function onResize() {
+        const w = appRow.clientWidth;
+        applyChatLeft(w * chatLeftRatio);
+        applyRightLeft(w * rightLeftRatio);
+    }
+
+    window.addEventListener('load', init);
+    window.addEventListener('resize', onResize);
+
+    function makeDraggable(handle, onMove) {
+        let dragging = false;
+        handle.addEventListener('pointerdown', e => {
+            dragging = true;
+            handle.classList.add('dragging');
+            handle.setPointerCapture(e.pointerId);
+            document.body.style.userSelect = 'none';
+        });
+        handle.addEventListener('pointermove', e => {
+            if (!dragging) return;
+            onMove(e.clientX - appRow.getBoundingClientRect().left);
+        });
+        const stop = () => {
+            dragging = false;
+            handle.classList.remove('dragging');
+            document.body.style.userSelect = '';
+        };
+        handle.addEventListener('pointerup', stop);
+        handle.addEventListener('pointercancel', stop);
+    }
+
+    makeDraggable(resizerLeft, applyChatLeft);
+    makeDraggable(resizerRight, applyRightLeft);
+})();

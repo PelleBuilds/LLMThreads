@@ -15,12 +15,12 @@
 @model ChatViewModel
 <body class="bg-dark text-white vh-100 overflow-hidden">
 
-    <div class="row g-0 h-100">
+    <div class="row g-0 " id="app-row">
 
         <!-- Left Sidebar -->
         <div class="col-2 bg-dark  d-flex flex-column" id="sidebar-left">
 
-            <div class="text-center fw-bold py-3 border-bottom fs-5">
+            <div class="text-center fw-bold py-3 fs-5">
                 Chats
             </div>
 
@@ -28,7 +28,7 @@
 
                 @foreach (Chat chat in Model.Chats)
                 {
-                    <button class="btn btn-dark text-start rounded-0 border-0 border-bottom w-100 py-3">
+                    <button class="btn btn-dark text-start rounded-4 border-0 border-bottom w-100 py-3">
                         @chat.ConversationId
                     </button>
                 }
@@ -40,7 +40,7 @@
         <!-- Chat -->
         <div class="col-8 d-flex justify-content-center align-items-center" id="chat">
 
-            <div class="bg-secondary bg-opacity-10 rounded-start-4 shadow-lg p-4 w-100 h-100">
+            <div class="bg-dark bg-opacity-75 rounded-start-4 p-4 w-100 h-100" id="chat-inner">
 
                 <h1 id="welcome-text" class="text-center mb-4 fw-light">
                     How can I help?
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Right Sidebar -->
-        <div class="col-2 bg-black shadow-lg">
+        <div id="sidebar-right" class="col-2 bg-black shadow-lg">
 
             <div id="sandpack-widget-root"
                  data-initial-code="export default function App() { return <h1>Hej!</h1> }"
@@ -65,7 +65,8 @@
         </div>
 
     </div>
-
+    <div class="resizer" id="resizerLeft"></div>
+    <div class="resizer" id="resizerRight"></div>
     <div class="position-fixed bottom-0 start-50 translate-middle-x mb-4 w-50" id="userinputgroup">
 
         <div class="input-group shadow-lg">
