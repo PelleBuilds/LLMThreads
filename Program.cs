@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.DataProtection;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
+using ThreadMapLLM.Interfaces;
 using ThreadMapLLM.Models;
-using ThreadMapLLM.Services;
+using ThreadMapLLM.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +15,19 @@ builder.Services.AddControllersWithViews();
 //var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI");
 var connectionString = builder.Configuration["MONGODB_URI"];
 
-builder.Services.AddSingleton<IMongoClient>(sp =>
-    new MongoClient(connectionString));
-builder.Services.AddScoped<MongoDBClient>();
+if (!string.IsNullOrWhiteSpace(connectionString))
+{
+    builder.Services.AddSingleton<IMongoClient>(sp_ =>
+        new MongoClient(connectionString));
+
+    builder.Services.AddScoped<IChatRepository, MongoDBRepository>();
+}
+else
+{
+    builder.Services.AddScoped<IChatRepository>(_ =>
+        new NullChatRepository());
+}
+
 /*try
 {
     var secret = builder.Configuration["apikey"];

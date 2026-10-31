@@ -4,18 +4,19 @@ using ThreadMapLLM.Models;
 using ThreadMapLLM.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using ThreadMapLLM.Interfaces;
 
 namespace ThreadMapLLM.Controllers
 {
     public class HomeController: Controller
     {
-        private MongoDBClient? _mongoDBClient;
+        private readonly IChatRepository _chatRepository;
         private User _user;
         private readonly OllamaApiService ollama = new();
         public ChatViewModel _model { get; set; }
         public Chat chat { get; set; }
 
-        public HomeController(MongoDBClient mongoDBClient/*, User user*/)
+        public HomeController(IChatRepository chatRepository/*, User user*/)
         {
 
             User testuser = new User
@@ -30,7 +31,7 @@ namespace ThreadMapLLM.Controllers
             chat = new Chat
             {
                 UserId = _user.UserId,
-                ConversationId = "hej1",
+                ConversationId = _user.UserId + DateTime.Now.ToString(),
                 ChatMessages = new List<ChatMessageViewModel?>()
             };
 
@@ -42,15 +43,16 @@ namespace ThreadMapLLM.Controllers
 
             };
             //GetChat(testuser.UserId);
-            _mongoDBClient = mongoDBClient;
+            _chatRepository = chatRepository;
 
         }
         
         public async Task<IActionResult> Index()
         {
+            
             try
             {
-                var allChats = await _mongoDBClient.GetAllChats(_user.UserId);
+                var allChats = await _chatRepository.GetAllChats(_user.UserId);
                 _model.Chats = allChats ?? new List<Chat>();
             }
             catch (Exception ex) 
@@ -94,7 +96,7 @@ namespace ThreadMapLLM.Controllers
             {
                 var modelresponse = ConvertToMessage(await GenerateText(userInput));
                 
-                 _mongoDBClient.SaveChatAsync(chat);
+                _= _chatRepository.SaveChatAsync(chat);
 
                 return PartialView("ChatMessage", modelresponse);
                
@@ -104,7 +106,7 @@ namespace ThreadMapLLM.Controllers
                 var modelresponse = await GenerateCode(userInput);
                 var modelResponseMessage =  ConvertToMessage(modelresponse);
 
-                 _mongoDBClient.SaveChatAsync(chat);
+                 _= _chatRepository.SaveChatAsync(chat);
                 
                 return Json(new { generatedCode = modelresponse });
                 //return PartialView("ChatMessage", modelresponse);

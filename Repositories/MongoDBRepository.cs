@@ -1,13 +1,14 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
 using ThreadMapLLM.Models;
-namespace ThreadMapLLM.Services
+using ThreadMapLLM.Interfaces;
+namespace ThreadMapLLM.Repositories
 {
-    public class MongoDBClient
+    public class MongoDBRepository : IChatRepository
     {
         private readonly IMongoCollection<Chat> _collection;
 
-        public MongoDBClient(IMongoClient client)
+        public MongoDBRepository(IMongoClient client) 
         {
             var database = client.GetDatabase("Chats");
             _collection = database.GetCollection<Chat>("Chats");
